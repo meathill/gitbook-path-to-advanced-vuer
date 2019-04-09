@@ -1,0 +1,26 @@
+{
+  "name": "gitbook-path-to-advanced-vuer",
+  "version": "1.0.0",
+  "description": "Vue 进阶必经之路 ==============",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meathill/gitbook-path-to-advanced-vuer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meathill/gitbook-path-to-advanced-vuer/issues"
+  },
+  "homepage": "https://github.com/meathill/gitbook-path-to-advanced-vuer#readme",
+  "dependencies": {
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.3",
+    "vuex": "^3.1.0",
+    "webpack": "^4.29.6"
+  }
+}
