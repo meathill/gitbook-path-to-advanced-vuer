@@ -1,7 +1,8 @@
-附录
+附录 & 扩展阅读
 ========
 
-扩展阅读
+
+ES6+
 --------
 
 ### 1. 《ES6 入门》 by 阮一峰
@@ -15,3 +16,9 @@
 读完入门，最适合再来个深入。这本书是红宝书《JavaScript 高级程序设计》作者的又一力作，语言平实易懂，翻译质量也很高。
 
 https://www.amazon.cn/dp/B071GW3JDP/ref=sr_1_1?__mk_zh_CN=%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%BD%91%E7%AB%99&keywords=%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3es6&qid=1554804466&s=gateway&sr=8-1
+
+
+Vue
+--------
+
+1. [官方：对比其它框架](https://cn.vuejs.org/v2/guide/comparison.html)
