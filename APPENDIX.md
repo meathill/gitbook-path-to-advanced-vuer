@@ -1,6 +1,7 @@
 附录 & 扩展阅读
 ========
 
+附录里的文章以原始出处为主，有些需要一些技巧才能看到。大家可以自行搜索中文翻译，但一定要注意日期，并结合原文。
 
 ES6+
 --------
@@ -22,3 +23,8 @@ Vue
 --------
 
 1. [官方：对比其它框架](https://cn.vuejs.org/v2/guide/comparison.html)
+
+### v3
+
+* [Evan You Previews Vue.js 3.0](https://medium.com/vue-mastery/evan-you-previews-vue-js-3-0-ab063dec3547)
+* [Plans for the Next Iteration of Vue.js](https://medium.com/the-vue-point/plans-for-the-next-iteration-of-vue-js-777ffea6fabf)
