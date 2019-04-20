@@ -51,7 +51,9 @@ Vue 神力的源泉：`Object.defineProperty`
 
 在我们普通开发者看来，修改数据，触发视图更新，就是直接 `this.foo = 'bar'` 这般简单，如前文所说，简直如同魔法。
 
-魔力的源泉，是 [`Object.defineProperty`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)，随着 ES5 定案，所以在之前的浏览器（IE 8-）里无法正常使用。
+魔力的源泉，是 [`Object.defineProperty`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)，属于 ES5 规范的内容，所以在之前的浏览器（IE 8-）里无法正常使用。
+
+Vue 文档称此为“响应式”，即界面会响应变量的变化而变化。作为前端的大家需要把它和基于 Media Query 的响应式区分开哦，后者通常用来实现移动端和桌面端多端布局。本文提到的响应式，则都是指 Vue 的响应式。
 
 > 注意：Vue 3 将用 ES2015 中的 [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 进行底层重构，届时，Vue 将不再依赖 `Object.defineProperty` 实现依赖变更的捕获。不过，就像用电一样，用火电还是用水电，对家用电器来讲是一样的；用何种底层数据侦听机制，对于我们开发者来说也是一样的。大家注意一下以后面试的时候不要说错即可。
 
@@ -101,3 +103,71 @@ Hello Vue!
 ```
 
 为什么呢？
+
+首先，对于任意一个 JS plain object，除非我们主动标明某个属性为“只读”（或称“不可写”，`writable: true`），不然都是可以写入的。所以 `app.name = 'meathill';` 是合法操作。不产生任何错误，而且接下来检查 `app.name`，还能得到 `meathill` 这个刚刚赋进去的值。
+
+但是 Vue 实例只会为预先声明的属性做好准备，也就是 `data` 里的那些。这些值，无论你声明成什么，在实例化时都会被替换成 getter/setter。没有事先声明的属性，自然没有 setter，赋值的时候也就不会触发依赖变化，也就没有后面的视图自动刷新。
+
+解决方案
+--------
+
+知道症结所在，我们就可以对症下药。
+
+### 方案一
+
+确保所有会用到的变量都事先声明。包括业务逻辑相关的变量和界面控制变量，这里尤其要注意后者，比如 `isLoading` 控制加载状态、`isSubmitting` 表示正在提交表单等，因为这些变量的变化多半都会触发界面变化，是最依赖响应式的。
+
+如果变量特别多，可能会不太好维护。这个时候我们可以把变量分组，然后用展开运算符 `...` 合并输出，比如
+
+```js
+data() {
+  const ui = {
+    isLoading: false,
+    isSaving: false,
+    isChecking: false,
+    // ...
+  };
+  const work = {
+    userInfo: null,
+    posts: null,
+    comments: null,
+    // ...
+  };
+  return {
+    ...ui,
+    ...work,
+  };
+}
+```
+
+### 方案二
+
+使用 `Vue.set` 或者 `vm.$set` 显示声明一些变量是响应式的。
+
+有时候，可能会有不定项的变量需要响应式，全部写一遍很烦，也不够灵活，这个时候我们可以用 `Vue.set` 或者 `vm.$set` 在运行时动态声明。
+
+比较常见的场景是一个配置页面，里面有若干配置项，大多数是可选，后端只返回用户配置过的部分。这个时候如果我们一个一个写就很累人。同时配置项多半不太需要响应式，这时用 `Vue.set` 也是不错的选择。
+
+检查响应式
+----------
+
+那么如何检查一个值是否被正确初始化呢？通过浏览器的开发者工具就可以做到。
+
+首先，打开开发者工具。
+
+接下来，找到我们要检查的类。
+
+在正确的钩子函数里打上断点。
+
+刷新，开发者工具会在断点处中断。
+
+展开实例属性，找到对应的值，你会发现，所有值都是 `(...)`，这是因为它已经被替换成 `set/get`，必须点一下，浏览器执行它的 `get` 方法才能得到真实值。
+
+如果你看到的是普通的字符、数值等常规类型，那就说明这个变量未被初始化，也就不能响应式了。
+
+数组和对象
+----------
+
+我们知道，JS 的数据类型可以简单分为两大类：简单数据类型和复杂数据类型。前者包含字符、数值、布尔、null；后者则包括万象，数组、对象、各种实例均是。
+
+前面我们说到的会被替换成 `set/get` 的是“简单数据类型”。复杂数据类型的操作更复杂一些，Vue 会
