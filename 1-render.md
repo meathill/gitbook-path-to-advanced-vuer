@@ -168,6 +168,86 @@ data() {
 数组和对象
 ----------
 
-我们知道，JS 的数据类型可以简单分为两大类：简单数据类型和复杂数据类型。前者包含字符、数值、布尔、null；后者则包括万象，数组、对象、各种实例均是。
+我们知道，JS 的数据类型可以简单分为两大类：简单数据类型和复杂数据类型。前者包含字符、数值、布尔、null；后者则包罗万象，数组、对象、各种实例均是。
 
-前面我们说到的会被替换成 `set/get` 的是“简单数据类型”。复杂数据类型的操作更复杂一些，Vue 会
+前面我们说到的会被替换成 `set/get` 的是“简单数据类型”。对复杂数据类型的操作更复杂一些，Vue 会递归遍历对象的所有属性，对其进行替换，将所有简单数据类型都换成 `set/get`。
+
+比如有一个帖子列表类，它有一个属性 `posts` 用来存放所有帖子信息：
+
+```js
+export default {
+  data() {
+    return {
+      posts: null,
+    };
+  };
+}
+```
+
+当我们使用
+
+```js
+this.posts = [
+  {
+    id: 1,
+    title: 'to be a better vuer',
+  },
+  // 其它帖子信息
+];
+```
+
+对其进行赋值时，后面这个数组的所有元素的所有属性，都会被替换。所以如果我们赋值之后修改 `this.posts[0].title = 'hello world';`，因为 `posts[0].title` 已经是 setter 函数，所以 Vue 就会收集到依赖变动，继而重新渲染视图。那么这个帖子的标题就会变成 'hello world'。
+
+想象这种需求：我们要给每个帖子实现删除按钮，点击删除按钮触发 `DELETE` 请求，并且在请求成功时把这一行干掉。它的模板应该是这样的：
+
+```pug
+tr(v-for="post in posts", :key="post.id")
+  td {{post.id}}
+  td {{post.title}}
+  td
+    button.btn.btn-danger(
+      type="button",
+      :disabled="post.isDeleting",
+      @click="doDelete(post)",
+    )
+      i.fas.fa-spin.fa-spinner(v-if="post.isDeleting")
+      i.fas.fa-trash(v-else)
+      span.ml-2 删除
+```
+
+此时如果我们这样写方法，就不会看到预期的效果：
+
+```js
+async doDelete(post) {
+  post.isDeleting = true;
+  await http.delete(post.id);
+  post.isDeleting = false;
+}
+```
+
+因为帖子列表数据 `posts` 被赋给本地模板依赖属性 `this.posts` 时，没有 `isDeleting` 这个属性，所以也不存在对应的 setter，所以 Vue 不知道我们修改了它的值，也不知道该重新渲染界面。
+
+解决方法比较简单，就是在赋值的时候，先进行一步处理，把可能用到的界面渲染要素都加进去：
+
+```js
+this.posts = [/*....*/].map(item => {
+  return {
+    ...item,
+    isDeleting,
+    isSaving,
+    isToggling,
+    // 有多少写多少
+  };
+});
+```
+
+总结
+--------
+
+基本上，只要你：
+
+1. 理解了 Vue 响应式渲染的原理；
+2. 知道如何检查一个属性是否被替换成 `get/set`；
+3. 在使用中提前赋值，或者用 `Vue.set` 增加响应式属性
+
+基本上就能解决所有页面不渲染问题了。
