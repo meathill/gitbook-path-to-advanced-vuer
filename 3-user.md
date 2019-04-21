@@ -16,7 +16,7 @@ Vuex
 2. Vuex 支持响应式
 3. 组件直接从 Vuex 获取数据，而不是从父组件接收，组件之间解耦，也方便我们对组件进行独立测试
 
-使用 Vue 的方式很简单，大家直接看 [Vuex 官方文档](https://vuex.vuejs.org/) 即可。
+使用 Vuex 的方式很简单，大家直接看 [Vuex 官方文档](https://vuex.vuejs.org/) 即可。
 
 Vue-Router
 ----------

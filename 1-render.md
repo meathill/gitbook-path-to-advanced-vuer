@@ -251,3 +251,5 @@ this.posts = [/*....*/].map(item => {
 3. 在使用中提前赋值，或者用 `Vue.set` 增加响应式属性
 
 基本上就能解决所有页面不渲染问题了。
+
+另外，官方文档：[深入响应式原理](https://cn.vuejs.org/v2/guide/reactivity.html)也一定要仔细读几遍。
