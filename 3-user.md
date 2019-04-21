@@ -36,4 +36,103 @@ Vue-Router 的作用在于帮我们组织单页应用。这个应该不需要太
 
 首先，用户登录保存 session 的动作，直接用 HTTP header 的 `set-cookie` 就行。很多同学这个地方还费劲吧啦的用 localStorage，然后用 axios 拦截器给每个请求加 token，其实完全没有必要，安全性也没有任何优势。
 
+我们可以把登录过程直接放到 Vuex.Store 里，接着定义路由：
 
+```js
+// store.js
+export default new Vuex.Store({
+  state: {
+    user: null,
+  },
+  mutations: {
+    setUser(state, user) {
+      state.user = user;
+    },
+  },
+  actions: {
+    login({commit}, data) {
+      service.login(data)
+        .then(user => {
+          commit('setUser', user);
+          return user;
+        });
+    },
+  },
+});
+
+// router.js
+export default new VueRouter({
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+    },
+    {
+      path: '/login',
+      name: 'login',
+    },
+  ],
+});
+```
+
+应用初始化的时候，先检查当前用户的登录状态——其实这个检查最好做成心跳脚本，不断检查，方便在用户 session 失效的时候跳出，避免错误。
+
+```js
+// app.vue
+export default {
+  beforeMount() {
+    checkUser()
+      .then(() => {
+        // 已登录
+      })
+      .catch(() => {
+        // 未登录，跳到登录页
+        this.$router.replace({
+          name: 'login',
+        });
+      });
+  },
+}
+```
+
+然后在登录页面，登录成功之后跳转到默认页面：
+
+```js
+// login.vue
+export default {
+  methods: {
+    doLogin() {
+      this.$store.dispatch('login', this.formData)
+        .then(() => {
+          // 登录成功，跳转到首页。其实这里可以记录下跳转前的 pathname，登录成功跳过去，比始终跳首页要好
+          this.$router.replace({
+            name: 'home',
+          });
+        })
+        .catch(error => {
+          // 登录失败，处理一下
+        });
+    },
+  },
+};
+```
+
+其它页面，需要用到用户信息，直接用 `Vuex.mapState` 就好：
+
+```vue
+<template lang="pug">
+Welcome, {{user.name}}
+</template>
+
+<script>
+import {mapState} from 'vuex';
+
+export default {
+  computed: {
+    ...mapState(['user']),
+  },
+}
+</script>
+```
+
+至于鉴权，因为 sessionId 写在 cookie 里，本身就是 HTTP 请求的一部分，不需要特别处理。
