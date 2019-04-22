@@ -135,4 +135,18 @@ export default {
 </script>
 ```
 
-至于鉴权，因为 sessionId 写在 cookie 里，本身就是 HTTP 请求的一部分，不需要特别处理。
+至于鉴权，因为 sessionId 写在 cookie 里，本身就是 HTTP 请求的一部分，不需要特别处理。不过我们可以拦截请求，如果触发 401，就跳到登录页。这里以 axios 为例：
+
+```js
+const http = axios.create();
+http.interceptors.response.use(response => {
+  return response;
+}, error => {
+  const {status} = error;
+  if (statue === 401) {
+    // 因为 router 路由绑在 vue 根组件上，axios 不好触及，这里就可以用到后面的“全局事件总线”
+    bus.emit('401', error);
+  }
+  return Promise.reject(error);
+});
+```
