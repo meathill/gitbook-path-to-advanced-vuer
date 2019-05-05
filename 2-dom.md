@@ -1,22 +1,24 @@
 DOM 操作，还需要么？
 =================
 
-不用问，答案自然是：**需要**。
+答案自然是：**需要**。
 
 MVVM 最重要的特性：数据双向绑定。与 jQuery 时代相比，Vue 无比强调“数据驱动”。哪怕是表示加载的小菊花，也要设置一个变量控制它：
 
+jQuery
 ```js
-// jQuery
 $('button').append('<i class="fas fa-spin fa-spinner"></i>');
-
-// vue
-this.isSaving = true;
 ```
 
+
+vue
 ```pug
 button
   i.fas.fa-spin.fa-spinner(v-if="isSaving")
   i.fas.fa-check(v-else)
+```
+```js
+this.isSaving = true;
 ```
 
 不过这并不意味着 Vue 里就不需要操作 DOM 了。通常来说，以下几种情况，需要我们手动更新 DOM：
@@ -24,7 +26,7 @@ button
 1. 对象并非 HTML 渲染的来，比如 `<canvas>` 绘制的图形
 2. 对象有着特有的渲染机制，比如 CodeMirror 生成的编辑器、图表如 EChart 等
 
-以 CodeMirror 举例，使用 Vue 操作 DOM 要注意两点：
+以 CodeMirror 为例，使用 Vue 操作 DOM 要注意两点：
 
 ## 1. 选择合适的钩子函数
 

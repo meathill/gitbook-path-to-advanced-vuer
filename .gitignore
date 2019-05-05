@@ -3,3 +3,7 @@ _book
 
 # repo
 node_modules
+
+# build
+index.html
+index.md
