@@ -82,3 +82,5 @@ Vue 里没有明确提出类的概念。它的做法比较像工厂模式，`Vue
 限于个人能力、知识视野、文字技术不足，文中难免有疏漏差错，如果你有任何疑问，欢迎在任何时间通过任何形式向我提出，我一定尽快答复修改。
 
 [GitHub issue](https://github.com/meathill/gitbook-path-to-advanced-vuer/issues)。
+
+再次感谢大家。

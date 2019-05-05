@@ -1,9 +1,10 @@
 # IDE
+_book
 .idea
 
 # repo
 node_modules
 
 # build
-index.html
-index.md
+/index.html
+/index.md
