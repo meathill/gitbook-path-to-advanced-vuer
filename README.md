@@ -1,5 +1,15 @@
-Vue 进阶必经之路
+走出 Vue 新手村
 ==============
+
+原本想写得更深一点，可惜有些内容日常开发的时候会遇到，写的时候就忘记了……所以最后成文比想象中浅很多，最后更名。以后慢慢更新吧，说不定有重回“进阶指南”的一天。
+
+这是我发在 GitChat 的文章，如果你觉得对你有帮助，可以前去购买，支持我创作更多更好的文章，
+
+[GitChat 走出 Vue 新手村](https://gitbook.cn/gitchat/activity/5ca6d6d3f8b5922e127e87c4)
+
+或者支付宝扫码领个红包：
+
+![支付宝领红包](https://qiniu.meathill.com/wp-content/uploads/2019/05/%E6%94%AF%E4%BB%98%E5%AE%9D%E7%BA%A2%E5%8C%85-269x300.png)
 
 前言
 ========
@@ -70,3 +80,5 @@ Vue 里没有明确提出类的概念。它的做法比较像工厂模式，`Vue
 --------
 
 限于个人能力、知识视野、文字技术不足，文中难免有疏漏差错，如果你有任何疑问，欢迎在任何时间通过任何形式向我提出，我一定尽快答复修改。
+
+[GitHub issue](https://github.com/meathill/gitbook-path-to-advanced-vuer/issues)。

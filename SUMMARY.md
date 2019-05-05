@@ -9,5 +9,8 @@
 * [组件插槽的使用](6-slot.md)
 * [组件库开发与使用](7-webpack.md)
 * [灵活与可靠](flexible-vs-reliable.md)
+
+* [2019-04-28 答疑](qa.md)
+
 * [附录](APPENDIX.md)
 

@@ -1,0 +1,406 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>组件库开发与使用 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="flexible-vs-reliable.html" />
+    
+    
+    <link rel="prev" href="6-slot.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="1-render.html">
+            
+                <a href="1-render.html">
+            
+                    
+                    彻底解决不渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="2-dom.html">
+            
+                <a href="2-dom.html">
+            
+                    
+                    DOM 操作，还需要么？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="3-user.html">
+            
+                <a href="3-user.html">
+            
+                    
+                    用全家桶认证用户
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="4-event-bus.html">
+            
+                <a href="4-event-bus.html">
+            
+                    
+                    全局事件总线
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="5-deep-data.html">
+            
+                <a href="5-deep-data.html">
+            
+                    
+                    多层组件数据传递
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="6-slot.html">
+            
+                <a href="6-slot.html">
+            
+                    
+                    组件插槽的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8" data-path="7-webpack.html">
+            
+                <a href="7-webpack.html">
+            
+                    
+                    组件库开发与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="flexible-vs-reliable.html">
+            
+                <a href="flexible-vs-reliable.html">
+            
+                    
+                    灵活与可靠
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="qa.html">
+            
+                <a href="qa.html">
+            
+                    
+                    2019-04-28 答疑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="APPENDIX.html">
+            
+                <a href="APPENDIX.html">
+            
+                    
+                    附录
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >组件库开发与使用</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7EC4;&#x4EF6;&#x5E93;&#x5F00;&#x53D1;&#x4E0E;&#x4F7F;&#x7528;">&#x7EC4;&#x4EF6;&#x5E93;&#x5F00;&#x53D1;&#x4E0E;&#x4F7F;&#x7528;</h1>
+<p>&#x7EC4;&#x4EF6;&#x5F00;&#x53D1;&#x662F;&#x4E2A;&#x5F88;&#x5927;&#x7684;&#x8BDD;&#x9898;&#xFF0C;&#x591A;&#x534A;&#x5F97;&#x641E;&#x4E00;&#x6B21;&#x201C;&#x8FBE;&#x4EBA;&#x8BFE;&#x201D;&#x624D;&#x8BB2;&#x5F97;&#x5B8C;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x6682;&#x4E14;&#x53EA;&#x5206;&#x4EAB;&#x5F53;&#x65F6;&#x88AB;&#x5361;&#x4E86;&#x4E00;&#x9635;&#x5B50;&#x7684;&#x7F16;&#x8BD1;&#x3002;</p>
+<p>&#x597D;&#x6BD4;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x597D;&#x51E0;&#x4E2A;&#x4EA7;&#x54C1;&#xFF0C;&#x8FD9;&#x4E9B;&#x4EA7;&#x54C1;&#x4E4B;&#x95F4;&#x6709;&#x4E00;&#x4E9B;&#x516C;&#x7528;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x5728;&#x6BCF;&#x4E2A;&#x4ED3;&#x5E93;&#x91CC;&#x72EC;&#x7ACB;&#x7EF4;&#x62A4;&#x8FD9;&#x4E9B;&#x7EC4;&#x4EF6;&#x660E;&#x663E;&#x4E0D;&#x5408;&#x9002;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5C31;&#x60F3;&#x628A;&#x5B83;&#x4EEC;&#x53D6;&#x51FA;&#x6765;&#xFF0C;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x7EC4;&#x4EF6;&#x4ED3;&#x5E93;&#xFF0C;&#x90A3;&#x4E48;&#x5E94;&#x8BE5;&#x600E;&#x4E48;&#x505A;&#x5462;&#xFF1F;</p>
+<h2 id="1-&#x5EFA;&#x7ACB;&#x4ED3;&#x5E93;">1. &#x5EFA;&#x7ACB;&#x4ED3;&#x5E93;</h2>
+<p>&#x8FD9;&#x4E00;&#x6B65;&#x5E94;&#x8BE5;&#x4E0D;&#x7528;&#x4ECB;&#x7ECD;&#x4E86;&#xFF0C;&#x521B;&#x5EFA;&#x4ED3;&#x5E93;&#xFF0C;<code>npm init</code> &#x521B;&#x5EFA; package.json&#xFF0C;&#x5B89;&#x88C5;&#x4F9D;&#x8D56;&#xFF0C;&#x7B49;&#x7B49;&#x3002;</p>
+<h2 id="2-&#x914D;&#x7F6E;-webpack">2. &#x914D;&#x7F6E; webpack</h2>
+<p>&#x8FD9;&#x4E00;&#x6B65;&#x4E3B;&#x8981;&#x7528;&#x6765;&#x914D;&#x7F6E;&#x6253;&#x5305;&#x9009;&#x9879;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x662F;&#x5165;&#x53E3;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;Vue &#x5355;&#x6587;&#x4EF6;&#x7EC4;&#x4EF6;&#x4E2D;&#x7684; <code>&lt;template&gt;</code> &#x90E8;&#x5206;&#x90FD;&#x4F1A;&#x88AB;&#x7F16;&#x8BD1;&#x6210; <code>render()</code> &#x51FD;&#x6570;&#xFF0C;&#x7136;&#x540E; <code>&lt;style&gt;</code> &#x90E8;&#x5206;&#x5219;&#x90FD;&#x4F1A;&#x88AB;&#x7F16;&#x8BD1;&#x6210;&#x63D2;&#x5165;&#x6837;&#x5F0F;&#x7684;&#x811A;&#x672C;&#xFF0C;&#x6700;&#x7EC8;&#x751F;&#x6210;&#x7684;&#x7EC4;&#x4EF6;&#x662F;&#x4E00;&#x4E2A;&#x7EAF;&#x7684; JS &#x6587;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x5165;&#x53E3;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x66B4;&#x9732;&#x6240;&#x6709;&#x7EC4;&#x4EF6;&#x7ED9;&#x5916;&#x754C;&#x7684; JS&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x8F93;&#x51FA;&#x6A21;&#x5F0F;&#xFF0C;&#x91CD;&#x70B9;&#x5728;&#x8FD9;&#x91CC;&#x3002;Webpack &#x652F;&#x6301;&#x5404;&#x79CD;&#x5404;&#x6837;&#x7684;&#x6253;&#x5305;&#x5F62;&#x5F0F;&#xFF0C;&#x4F5C;&#x4E3A;&#x5E93;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;&#x662F; commonjs2 &#x6216;&#x8005; umd&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x5B9A;&#x8981;&#x914D;&#x7F6E; <code>libraryTarget</code>&#x3002;</p>
+<p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x5173;&#x6CE8;&#x4F9D;&#x8D56;&#x3002;&#x901A;&#x5E38;&#xFF0C;&#x8FD9;&#x4E2A;&#x7EC4;&#x4EF6;&#x5E93;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x4EE5;&#x5185;&#x90E8;&#x4F7F;&#x7528;&#x4E3A;&#x4E3B;&#xFF0C;&#x4F9D;&#x8D56;&#x591A;&#x534A;&#x662F;&#x5171;&#x7528;&#x7684;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x628A;&#x4F9D;&#x8D56;&#x90FD;&#x6253;&#x5305;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>externals</code> &#x914D;&#x7F6E;&#x5C06;&#x5B83;&#x4EEC;&#x6392;&#x9664;&#x51FA;&#x53BB;&#x3002;</p>
+<p>&#x6700;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x5E0C;&#x671B;&#x62BD;&#x51FA; CSS&#x3001;&#x6216;&#x8005;&#x5BF9; JS &#x8FDB;&#x884C;&#x538B;&#x7F29;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x914D;&#x7F6E; terser-webpack-plugin&#x3001;mini-css-extract-plugin &#x8FD9;&#x4E9B;&#x63D2;&#x4EF6;&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#x4E0D;&#x4F1A;&#x51FA;&#x9519;&#xFF0C;&#x6211;&#x5C31;&#x4E0D;&#x591A;&#x8BF4;&#x4E86;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-comment">// webpack.config.js</span>
+<span class="hljs-keyword">const</span> VueLoaderPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;vue-loader/lib/plugin&apos;</span>);
+
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-comment">// entry &#x9ED8;&#x8BA4;&#x4E3A;&#x5F53;&#x524D;&#x76EE;&#x5F55; ./src/index.js&#xFF0C;&#x53EF;&#x4EE5;&#x4E0D;&#x5199;</span>
+  output: {
+    libraryTarget: <span class="hljs-string">&apos;commonjs2&apos;</span>, <span class="hljs-comment">// &#x56E0;&#x4E3A;&#x4E0D;&#x8003;&#x8651;&#x5355;&#x72EC;&#x4F7F;&#x7528;&#xFF0C;commonjs2 &#x8DB3;&#x591F;&#x4E86;</span>
+  },
+  <span class="hljs-comment">// module &#x914D;&#x7F6E;&#x5C31;&#x4E0D;&#x5199;&#x4E86;&#xFF0C;&#x6CA1;&#x5565;&#x53EF;&#x5199;&#x7684;</span>
+  <span class="hljs-comment">// &#x4EE5; commonjs &#x5F62;&#x5F0F;&#x52A0;&#x8F7D;&#x8FD9;&#x4E24;&#x4E2A;&#x4F9D;&#x8D56;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x4F9D;&#x8D56;&#x5728;&#x4EA7;&#x54C1;&#x4ED3;&#x5E93;&#x4E2D;&#x90FD;&#x6709;&#x7528;&#x5230;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x6253;&#x5305;</span>
+  externals: {
+    <span class="hljs-string">&apos;eventemitter3&apos;</span>: <span class="hljs-string">&apos;commonjs eventemitter3&apos;</span>,
+    <span class="hljs-string">&apos;lodash-es&apos;</span>: <span class="hljs-string">&apos;commonjs lodash-es&apos;</span>
+  },
+  <span class="hljs-comment">// vue-loader &gt;= 15 &#x4E4B;&#x540E;&#xFF0C;&#x7F16;&#x8BD1;&#x673A;&#x5236;&#x51FA;&#x73B0;&#x53D8;&#x5316;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x7528;&#x8FD9;&#x4E2A;&#x63D2;&#x4EF6;</span>
+  plugins: [
+    <span class="hljs-keyword">new</span> VueLoaderPlugin(),
+  ],
+}
+
+<span class="hljs-comment">// src/index.js</span>
+<span class="hljs-keyword">import</span> Component1 <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./component-1.vue&apos;</span>;
+<span class="hljs-keyword">import</span> Component2 <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./component-2.vue&apos;</span>;
+
+<span class="hljs-keyword">export</span> {
+  Component1,
+  Component2,
+};
+</code></pre>
+<h2 id="3-&#x7F16;&#x8BD1;&#xFF0C;&#x63D0;&#x4EA4;&#xFF0C;&#x5B89;&#x88C5;">3. &#x7F16;&#x8BD1;&#xFF0C;&#x63D0;&#x4EA4;&#xFF0C;&#x5B89;&#x88C5;</h2>
+<p>&#x6211;&#x4EEC;&#x6709;&#x4E24;&#x79CD;&#x90E8;&#x7F72;&#x65B9;&#x6848;&#xFF1A;1. &#x76F4;&#x63A5;&#x901A;&#x8FC7; GitHub &#x90E8;&#x7F72;&#xFF1B;2. &#x901A;&#x8FC7; NPM &#x90E8;&#x7F72;&#x3002;</p>
+<p>NPM &#x90E8;&#x7F72;&#x53EA;&#x9700;&#x8981; <code>npm publish</code> &#x5373;&#x53EF;&#xFF0C;&#x597D;&#x5904;&#x662F;&#x4E0D;&#x6C61;&#x67D3;&#x4ED3;&#x5E93;&#xFF0C;&#x6709;&#x6BD4;&#x8F83;&#x5B8C;&#x5584;&#x7684;&#x7248;&#x672C;&#x7BA1;&#x7406;&#x548C;&#x4F9D;&#x8D56;&#x7BA1;&#x7406;&#x3002;&#x574F;&#x5904;&#x662F; NPM &#x9ED8;&#x8BA4;&#x662F;&#x516C;&#x5F00;&#x7684;&#xFF0C;&#x60F3;&#x79C1;&#x6709;&#x5F97;&#x82B1;&#x94B1;&#x4E70;&#x4F01;&#x4E1A;&#x7248;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x6211;&#x6682;&#x65F6;&#x53EA;&#x7528;&#x5230; GitHub &#x90E8;&#x7F72;&#x3002;&#x9996;&#x5148;&#xFF0C;&#x7F16;&#x8BD1;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x7F16;&#x8BD1;&#x540E;&#x7684;&#x6587;&#x4EF6;&#x4E5F;&#x63D0;&#x4EA4;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x4FEE;&#x6539; package.json&#xFF0C;&#x628A;&#x91CC;&#x9762;&#x7684;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; <code>main</code> &#x6307;&#x5411;&#x7F16;&#x8BD1;&#x7ED3;&#x679C; <code>dist/index.js</code>&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5B89;&#x88C5;&#xFF0C;<code>npm i owner/repo</code> &#x5373;&#x53EF;&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x7684; GitHub &#x7528;&#x6237;&#x540D; meathill&#xFF0C;&#x6211;&#x7684;&#x4ED3;&#x5E93;&#x540D; hello-world&#xFF0C;&#x90A3;&#x5C31;&#x662F; <code>npm i meathill/hello-world</code>&#x3002;&#x4E5F;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x7248;&#x672C;&#xFF0C;&#x5728;&#x540E;&#x9762;&#x52A0; <code>#</code>&#xFF1A;<code>npm i meathill/hello-world#a1b2c3d</code>&#x3002;NPM &#x5B89;&#x88C5; GitHub &#x4ED3;&#x5E93;&#x65E0;&#x6CD5;&#x6307;&#x5B9A;&#x7248;&#x672C;&#xFF0C;&#x4F1A;&#x62A5;&#x9519;&#x201C;&#x6CA1;&#x6709; package.json&#x201D;&#xFF0C;&#x6682;&#x65F6;&#x4E0D;&#x77E5;&#x9053;&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x3002;</p>
+<hr>
+<p>&#x597D;&#x4E86;&#xFF0C;&#x81F3;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x72EC;&#x7ACB;&#x7684;&#x5F00;&#x53D1;&#x7EF4;&#x62A4;&#x7EC4;&#x4EF6;&#x4ED3;&#x5E93;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x5176;&#x5B83;&#x4EA7;&#x54C1;&#x4E2D;&#x4F7F;&#x7528;&#x5B83;&#x4E86;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="6-slot.html" class="navigation navigation-prev " aria-label="Previous page: 组件插槽的使用">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="flexible-vs-reliable.html" class="navigation navigation-next " aria-label="Next page: 灵活与可靠">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"组件库开发与使用","level":"1.8","depth":1,"next":{"title":"灵活与可靠","level":"1.9","depth":1,"path":"flexible-vs-reliable.md","ref":"flexible-vs-reliable.md","articles":[]},"previous":{"title":"组件插槽的使用","level":"1.7","depth":1,"path":"6-slot.md","ref":"6-slot.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-webpack.md","mtime":"2019-04-22T03:51:00.654Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-05T05:25:21.324Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
