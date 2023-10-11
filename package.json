@@ -20,10 +20,9 @@
   },
   "homepage": "https://github.com/meathill/gitbook-path-to-advanced-vuer#readme",
   "dependencies": {
-    "marked": "^7.0.2",
-    "vue": "^2.7.14",
-    "vue-router": "^3.6.5",
-    "vuex": "^3.6.2",
-    "webpack": "^5.88.2"
+    "marked": "^9.1.0",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.5",
+    "vuex": "^4.1.0"
   }
 }
